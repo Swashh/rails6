@@ -1,0 +1,8 @@
+<h2>Название поста:</h2>
+<h1> <%= @post.title %></h1>
+<h2>Описание поста :</h2>
+<p1> <%= @post.text %></p1>
+<%= render partial: "comments/comments", locals: {commentable: @post} %>
+<%= render partial: "comments/form", locals: {commentable: @post} %>
+
+<p><%= link_to "Назад", categories_path %></p>

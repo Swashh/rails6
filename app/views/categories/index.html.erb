@@ -1,0 +1,24 @@
+
+<h1>Категории</h1>
+<div class="category" id="category">
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+
+  <% @category.each do |category| %>
+      <tr>
+        <td><%= category.title %></td>
+        <td><%= category.text %></td>
+        <td><%= link_to 'Показать', category_path(category), class:'btn btn-primary' %></td>
+        <td><%= link_to 'Редактировать', edit_category_path(category), class: 'btn btn-success' %></td>
+        <td><%= link_to 'Удалить', category_path(category),
+                        method: :delete,
+                        data: {confirm: "Хотите удалить категорию?"}, class: 'btn btn-danger' %></td>
+      </tr>
+  <% end %>
+</table>
+</div>

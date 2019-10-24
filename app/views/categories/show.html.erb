@@ -1,0 +1,35 @@
+<div style="display: flex; flex-flow: row wrap; justify-content: space-between;">
+  <div style="flex: 100% 0 0; display: flex; flex-flow: column nowrap; align-items: center;">
+<p>
+  <strong>Название:</strong>
+  <%= @category.title %>
+</p>
+<p>
+  <strong>Описание:</strong>
+  <%= @category.text %>
+</p>
+  </div>
+
+<div style="flex: calc(50% - 15px) 0 0;">
+<h2>Посты</h2>
+
+<% @category.posts.each do |post| %>
+    <div class="alert alert-light">
+      <h3><%= post.title %></h3>
+      <p><%= post.text %></p>
+      <%= link_to "Показать пост", post_path(post), class: 'btn btn-primary' %>
+      <%= link_to "Pедактировать пост", edit_post_path(post), class: 'btn btn-success' %>
+      <%= link_to "Удалить пост", post_path(post), method: :delete,
+                  data: {confirm: "Хотите удалить категорию?"}, class: 'btn btn-danger' %>
+      <%= link_to 'Назад', categories_path, class: 'btn btn-success' %>
+
+    </div>
+    <br>
+<% end %>
+</div>
+  <div style="flex: calc(50% - 15px) 0 0;">
+    <h2>Комментарии</h2>
+  <%= render partial: "comments/form", locals: {commentable: @category} %>
+  <%= render partial: "comments/comments", locals: {commentable: @category} %>
+  </div>
+</div>

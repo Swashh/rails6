@@ -26,6 +26,8 @@
 
     <p>
       <%= f.submit %>
+      <%= f.collection_select :category_id, Category.order(:title),:id,:title, include_blank: true %>
+      <%= f.file_field :image %>
     </p>
     <p>
       <%= link_to 'Назад', categories_path %>

@@ -1,4 +1,4 @@
-<%= form_for @post, url:posts_path  do |f| %>
+<%= form_for @post, html: {muiltypart: true}, url:posts_path  do |f| %>
 
     <% if @post.errors.any? %>
         <div id="error_explanation">
@@ -27,7 +27,10 @@
     <p>
       <%= f.submit("Подтвердить",{class:'btn btn-outline-primary'}) %>
       <%= link_to 'Назад', categories_path, class:'btn btn-outline-success' %>
-      <%= f.collection_select :category_id, Category.order(:title),:id,:title, include_blank: true %>
-
+      <%= f.file_field :image %>
+    <p>
+      Выбор категории
+    </p>
+      <%= f.collection_select :category_id, Category.order(:title),:id,:title, {include_blank: true}, {class:'form-control'} %>
     </p>
 <% end %>

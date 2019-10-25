@@ -1,14 +1,13 @@
 <div style="display: flex; flex-flow: row wrap; justify-content: space-between;">
   <div style="flex: 100% 0 0; display: flex; flex-flow: column nowrap; align-items: center;">
-<p>
-  <strong>Название:</strong>
-  <%= @category.title %>
-</p>
-<p>
-  <strong>Описание:</strong>
-  <%= @category.text %>
-</p>
-  </div>
+    <p>
+      <strong>Название: <%= @category.title %></strong>
+    </p>
+    <p>
+      <strong>Описание: <%= @category.text %></strong>
+      <%= @category.text %>
+    </p>
+</div>
 
 <div style="flex: calc(50% - 15px) 0 0;">
 <h2>Посты</h2>
@@ -29,6 +28,9 @@
 </div>
   <div style="flex: calc(50% - 15px) 0 0;">
     <h2>Комментарии</h2>
+    <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
   <%= render partial: "comments/form", locals: {commentable: @category} %>
   <%= render partial: "comments/comments", locals: {commentable: @category} %>
   </div>

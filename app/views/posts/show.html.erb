@@ -1,8 +1,17 @@
-<h2>Название поста:</h2>
-<h1> <%= @post.title %></h1>
-<h2>Описание поста :</h2>
-<p1> <%= @post.text %></p1>
-<%= render partial: "comments/comments", locals: {commentable: @post} %>
-<%= render partial: "comments/form", locals: {commentable: @post} %>
-
-<p><%= link_to "Назад", categories_path %></p>
+<div style="display: flex; flex-flow: row wrap; justify-content: space-between;">
+  <div style="flex: 100% 0 0; display: flex; flex-flow: column nowrap; align-items: center;">
+    <h2>Название поста: <%= @post.title %></h2>
+      <h2>Описание поста: <%= @post.text %></h2>
+  </div>
+  <div style="flex: calc(50% - 15px) 0 0;">
+    <%= image_tag @post.image.url(:large), class: 'img-show' if @post.image? %>
+  </div>
+  <div style="flex: calc(50% - 15px) 0 0;">
+    <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <%= render partial: "comments/form", locals: {commentable: @post} %>
+    <%= link_to "Назад", @post.category %>
+    <%= render partial: "comments/comments", locals: {commentable: @post} %>
+  </div>
+</div>

@@ -2,13 +2,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.new(comment_params)
-    @comment.save
-    respond_to do |format|
-      format.html {redirect_to @commentable, notice: "Your comment was successfully posted."}
-      format.js
-      # redirect_to @commentable, notice: "Your comment was successfully posted."
+    if @comment.save
+      flash[:notice] = "Post successfully created"
+      redirect_to @commentable
+    else
+      flash[:notice] = "Can't be empty"
+      redirect_to @commentable
     end
-    end
+  end
 
   private
 

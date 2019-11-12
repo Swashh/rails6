@@ -27,10 +27,15 @@
     <p>
       <%= f.submit("Подтвердить",{class:'btn btn-outline-primary'}) %>
       <%= link_to 'Назад', categories_path, class:'btn btn-outline-success' %>
-      <%= f.file_field :image %>
     <p>
-      Выбор категории
+    <p>
+      <%= f.label :Add_picture%><br>
+      <%= f.file_field :image %>
     </p>
-      <%= f.collection_select :category_id, Category.order(:title),:id,:title, {include_blank: true}, {class:'form-control'} %>
+
+    </p>
+
+      <%= f.label :category_id %><br>
+      <%= f.collection_select :category_id, Category.order(:title),:id,:title, { include_blank: true} , {class:'form-control'} %>
     </p>
 <% end %>

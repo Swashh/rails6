@@ -1,12 +1,15 @@
-class CommentsController < ApplicationController
+# frozen_string_literal: true
 
+class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     if @comment.save
-      flash[:notice] = "Post successfully created"
+      flash[:notice] = 'Post successfully created'
       redirect_to @commentable
     else
-      flash[:notice] = "Can't be empty"
+      flash[:notice] = "must contain two words(mininmum 2 symbols) and '.', first word start with capital lettercd before() do
+
+      end"
       redirect_to @commentable
     end
   end

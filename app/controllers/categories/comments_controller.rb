@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Categories::CommentsController < CommentsController
   before_action :set_commentable
 

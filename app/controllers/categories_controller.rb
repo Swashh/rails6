@@ -1,27 +1,27 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
-  before_action :set_data, only: [:show, :edit, :update, :destroy]
+  before_action :set_data, only: %i[show edit update destroy]
 
   def index
-  @category = Category.all
+    @category = Category.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
-  @category = Category.new
+    @category = Category.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
-  @category = Category.new(category_params)
-  if @category.save
-    redirect_to @category
-  else
-    render 'new'
-    end
+    @category = Category.new(category_params)
+    if @category.save
+      redirect_to @category
+    else
+      render 'new'
+      end
   end
 
   def update
@@ -41,10 +41,9 @@ class CategoriesController < ApplicationController
 
   def set_data
     @category = Category.find(params[:id])
-
   end
 
   def category_params
-    params.require(:category).permit(:title,:text)
+    params.require(:category).permit(:title, :text)
   end
 end

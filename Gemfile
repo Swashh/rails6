@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
-
+gem 'robocop', '~> 0.1.1'
+gem 'rubocop', require: false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use sqlite3 as the database for Active Record
@@ -35,6 +36,11 @@ gem 'bootstrap'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'faker', require: true
+  gem 'rspec-rails', '~> 4.0.0.beta2'
+  # gem 'rspec-rails', '~> 3.8'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -49,11 +55,14 @@ group :development do
 end
 
 group :test do
+  gem 'capybara-screenshot'
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  # gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'capybara-selenium', '~> 0.0.6'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

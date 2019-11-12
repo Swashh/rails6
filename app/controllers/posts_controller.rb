@@ -1,27 +1,28 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :post_data, only: [:show, :edit, :update, :destroy]
+  before_action :post_data, only: %i[show edit update destroy]
+  #before_action :category_post, only: %i[destroy]
 
   def index
     @post = Post.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @post = Post.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @post = Post.new(post_params)
-      if @post.save
+    if @post.save
       redirect_to @post
     else
       render 'new'
-    end
+  end
   end
 
   def update
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to @post.category
+    redirect_to @category
   end
 
   private
@@ -44,6 +45,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title,:text,:category_id, :image)
+    params.require(:post).permit(:title, :text, :category_id, :image)
   end
 end

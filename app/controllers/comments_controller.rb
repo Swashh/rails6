@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Post successfully created'
       redirect_to @commentable
     else
-      flash[:notice] = "must contain two words(mininmum 2 symbols) and '.', first word start with capital lettercd before() do
+      flash[:notice] = "must contain two words(minimum 2 symbols) and '.', first word start with capital letter before() do
 
       end"
       redirect_to @commentable

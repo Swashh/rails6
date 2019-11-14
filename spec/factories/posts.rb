@@ -1,5 +1,6 @@
-FactoryBot.define do
+# frozen_string_literal: true
 
+FactoryBot.define do
   factory :post do
     title { 'AA AA' }
     text { Faker::Lorem.words(number: 2) }

@@ -2,7 +2,6 @@
 
 class PostsController < ApplicationController
   before_action :post_data, only: %i[show edit update destroy]
-  #before_action :category_post, only: %i[destroy]
 
   def index
     @post = Post.all
@@ -22,7 +21,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       render 'new'
-  end
+    end
   end
 
   def update
@@ -35,7 +34,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to @category
+    redirect_to categories_path
   end
 
   private

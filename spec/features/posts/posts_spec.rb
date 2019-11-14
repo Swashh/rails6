@@ -21,7 +21,7 @@ RSpec.feature 'Posts', type: :feature do
 
   context 'Edit' do
     let!(:post) { create(:post) }
-    it'post' do
+    it'current post' do
       visit edit_post_path(post)
       fill_in 'post[title]', with: 'XX XX'
       fill_in 'post[text]', with: 'XX XX'
@@ -32,9 +32,9 @@ RSpec.feature 'Posts', type: :feature do
   end
 
   context 'Delete' do
-    let!(:post) { create(:post) }
+    let(:post) { create(:post) }
     let!(:category) { create(:category, title: 'BB BB', posts: [post]) }
-    it 'Delete Post' do
+    it 'post from category' do
       visit category_path(category)
       click_link('Удалить пост')
       page.accept_alert

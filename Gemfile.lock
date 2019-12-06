@@ -144,7 +144,7 @@ GEM
       ast (~> 2.4.0)
     popper_js (1.14.5)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.2)
     rack (2.0.7)
     rack-proxy (0.6.5)
       rack
@@ -294,7 +294,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   mini_magick
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 6.0.0)
   robocop (~> 0.1.1)
   rspec-rails (~> 4.0.0.beta2)
